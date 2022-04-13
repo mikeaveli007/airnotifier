@@ -6,16 +6,19 @@ ENV DEBIAN_FRONTEND=noninteractive TERM=linux
 EXPOSE 8801
 
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends git ca-certificates
+    apt-get install -y --no-install-recommends git ca-certificates build-essential python-dev python3-dev
 
 RUN pip3 install pipenv
 
-RUN git clone -b 2.x https://github.com/airnotifier/airnotifier.git /airnotifier
+RUN git clone https://github.com/mikeaveli007/airnotifier /airnotifier
+
 RUN mkdir -p /var/airnotifier/pemdir && \
     mkdir -p /var/log/airnotifier
 
 VOLUME ["/airnotifier", "/var/log/airnotifier", "/var/airnotifier/pemdir"]
 WORKDIR /airnotifier
+
+ADD ./config.py /airnotifier
 
 RUN pipenv install --deploy
 

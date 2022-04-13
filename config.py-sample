@@ -1,11 +1,13 @@
+import os
+
 # https = True
 # httpscertfile = "/path/to/ssl/certificate.cert"
 # httpskeyfile = "/path/to/ssl/server.key"
 
-port = 8801
+server =  os.getenv('MONGO_SERVER')
+port = os.getenv('MONGO_PORT')
 
-# mongouri = 'mongodb://root:pass@localhost:27017/'
-mongouri = "mongodb://localhost:27017/"
+mongouri = f'mongodb://{server}:{port}/'
 
 passwordsalt = 'd2o0n1g2s0h3e1n1g'
 cookiesecret = 'airnotifiercookiesecret'
