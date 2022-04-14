@@ -67,6 +67,8 @@ if __name__ == "__main__":
     options.parse_config_file("config.py")
     options.parse_command_line()
 
+    logging.info("mongodb uri: " + options.mongouri)
+
     if options.sentrydsn:
         sentry_sdk.init(dsn=options.sentrydsn, integrations=[TornadoIntegration()])
     else:

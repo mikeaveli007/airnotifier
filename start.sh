@@ -24,4 +24,5 @@ fi
 echo "Installing AirNotifier ..."
 pipenv run ./install.py
 echo "Starting AirNotifier ..."
-pipenv run ./app.py >> "$LOGFILE" 2>> "$LOGFILE_ERR"
+#pipenv run ./app.py >> "$LOGFILE" 2>> "$LOGFILE_ERR"
+pipenv run ./app.py 2>> "$LOGFILE_ERR"
